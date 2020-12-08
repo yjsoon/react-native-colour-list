@@ -63,10 +63,22 @@ function HomeScreen({ navigation }) {
 }
 
 function DetailsScreen({ route }) {
+  const { red, green, blue } = route.params;
+
   return (
-    <Text>
-      {route.params.red}, {route.params.green}, {route.params.blue}
-    </Text>
+    <View
+      style={[
+        styles.container,
+        {
+          justifyContent: "center",
+          backgroundColor: `rgb(${red}, ${green}, ${blue})`,
+        },
+      ]}
+    >
+      <Text style={styles.detailsText}>Red: {red}</Text>
+      <Text style={styles.detailsText}>Green: {green}</Text>
+      <Text style={styles.detailsText}>Blue: {blue}</Text>
+    </View>
   );
 }
 
@@ -88,5 +100,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
+  },
+  detailsText: {
+    fontSize: 36,
+    marginBottom: 12,
   },
 });
