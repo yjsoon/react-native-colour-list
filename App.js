@@ -8,7 +8,9 @@ import BlockRGB from "./components/BlockRGB";
 function HomeScreen() {
   return (
     <View style={styles.container}>
-      <BlockRGB></BlockRGB>
+      <BlockRGB red={255} green={0} blue={0} />
+      <BlockRGB red={0} green={255} blue={0} />
+      <BlockRGB red={0} green={0} blue={255} />
     </View>
   );
 }
