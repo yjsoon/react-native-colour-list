@@ -23,14 +23,26 @@ function HomeScreen() {
     setColorArray([...colorArray, newColor]);
   }
 
+  function resetColor() {
+    setColorArray([]);
+  }
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={{ height: 40, justifyContent: "center" }}
         onPress={addColor}
       >
-        <Text style={{ color: "red" }}>Add Colour</Text>
+        <Text style={{ color: "blue" }}>Add Colour</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{ height: 40, justifyContent: "center" }}
+        onPress={resetColor}
+      >
+        <Text style={{ color: "red" }}>Reset Colour</Text>
+      </TouchableOpacity>
+
       <FlatList
         style={{ width: "100%" }}
         data={colorArray}
