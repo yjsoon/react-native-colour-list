@@ -11,7 +11,13 @@ function HomeScreen({ navigation }) {
 
   function renderItem({ item }) {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate("DetailsScreen")}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("DetailsScreen", {
+            ...item,
+          })
+        }
+      >
         <BlockRGB red={item.red} green={item.green} blue={item.blue} />
       </TouchableOpacity>
     );
@@ -56,8 +62,12 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function DetailsScreen() {
-  return <Text>Hey these are my details!</Text>;
+function DetailsScreen({ route }) {
+  return (
+    <Text>
+      {route.params.red}, {route.params.green}, {route.params.blue}
+    </Text>
+  );
 }
 
 const Stack = createStackNavigator();
