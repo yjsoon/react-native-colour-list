@@ -6,11 +6,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import BlockRGB from "./components/BlockRGB";
 import { FlatList } from "react-native-gesture-handler";
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
   const [colorArray, setColorArray] = useState([]);
 
   function renderItem({ item }) {
-    return <BlockRGB red={item.red} green={item.green} blue={item.blue} />;
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate("DetailsScreen")}>
+        <BlockRGB red={item.red} green={item.green} blue={item.blue} />
+      </TouchableOpacity>
+    );
   }
 
   function addColor() {
@@ -52,6 +56,10 @@ function HomeScreen() {
   );
 }
 
+function DetailsScreen() {
+  return <Text>Hey these are my details!</Text>;
+}
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -59,6 +67,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Kueh Lapis" component={HomeScreen} />
+        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
