@@ -4,13 +4,26 @@ import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import BlockRGB from "./components/BlockRGB";
+import { FlatList } from "react-native-gesture-handler";
+
+const COLOURS = [
+  { red: 255, green: 128, blue: 0, id: "0" },
+  { red: 0, green: 128, blue: 255, id: "1" },
+  { red: 128, green: 0, blue: 255, id: "2" },
+];
 
 function HomeScreen() {
+  function renderItem({ item }) {
+    return <BlockRGB red={item.red} green={item.green} blue={item.blue} />;
+  }
+
   return (
     <View style={styles.container}>
-      <BlockRGB red={255} green={0} blue={0} />
-      <BlockRGB red={0} green={255} blue={0} />
-      <BlockRGB red={0} green={0} blue={255} />
+      <FlatList
+        style={{ width: "100%" }}
+        data={COLOURS}
+        renderItem={renderItem}
+      />
     </View>
   );
 }
