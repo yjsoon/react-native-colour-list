@@ -25,7 +25,12 @@ function HomeScreen({ navigation }) {
           })
         }
       >
-        <BlockRGB red={item.red} green={item.green} blue={item.blue} />
+        <BlockRGB
+          style={{ height: 60, width: 60 }}
+          red={item.red}
+          green={item.green}
+          blue={item.blue}
+        />
       </TouchableOpacity>
     );
   }
