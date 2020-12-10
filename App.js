@@ -88,6 +88,12 @@ function HomeScreen({ navigation }) {
 function DetailsScreen({ route }) {
   const { red, green, blue } = route.params;
 
+  // define contrasting colors for Text
+
+  const textRed = red > 125 ? 255 - red - 20 : 255 + red + 20;
+  const textGreen = green > 125 ? 255 - green - 20 : 255 + green + 20;
+  const textBlue = blue > 125 ? 255 - blue - 20 : 255 + blue + 20;
+
   return (
     <View
       style={[
@@ -98,9 +104,30 @@ function DetailsScreen({ route }) {
         },
       ]}
     >
-      <Text style={styles.detailsText}>Red: {red}</Text>
-      <Text style={styles.detailsText}>Green: {green}</Text>
-      <Text style={styles.detailsText}>Blue: {blue}</Text>
+      <Text
+        style={[
+          { color: `rgb(${textRed}, ${textGreen}, ${textBlue})` },
+          styles.detailsText,
+        ]}
+      >
+        Red: {red}
+      </Text>
+      <Text
+        style={[
+          { color: `rgb(${textRed}, ${textGreen}, ${textBlue})` },
+          styles.detailsText,
+        ]}
+      >
+        Green: {green}
+      </Text>
+      <Text
+        style={[
+          { color: `rgb(${textRed}, ${textGreen}, ${textBlue})` },
+          styles.detailsText,
+        ]}
+      >
+        Blue: {blue}
+      </Text>
     </View>
   );
 }
