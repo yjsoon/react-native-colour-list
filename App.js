@@ -1,13 +1,23 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Button,
+  useWindowDimensions,
+} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import BlockRGB from "./components/BlockRGB";
 import { FlatList } from "react-native-gesture-handler";
 
+const NUM_COLUMNS = 10;
+
 function HomeScreen({ navigation }) {
   const [colorArray, setColorArray] = useState([]);
+  const BLOCK_SIZE = useWindowDimensions().width / NUM_COLUMNS;
 
   useEffect(() => {
     navigation.setOptions({
@@ -26,7 +36,7 @@ function HomeScreen({ navigation }) {
         }
       >
         <BlockRGB
-          style={{ height: 60, width: 60 }}
+          style={{ height: BLOCK_SIZE, width: BLOCK_SIZE }}
           red={item.red}
           green={item.green}
           blue={item.blue}
@@ -69,7 +79,7 @@ function HomeScreen({ navigation }) {
         style={{ width: "100%" }}
         data={colorArray}
         renderItem={renderItem}
-        numColumns={4}
+        numColumns={NUM_COLUMNS}
       />
     </View>
   );
