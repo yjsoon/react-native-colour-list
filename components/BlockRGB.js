@@ -5,7 +5,7 @@ export default function BlockRGB(props) {
   return (
     <View
       style={{
-        width: "100%",
+        width: 104,
         height: 60,
         backgroundColor: `rgb(${props.red}, ${props.green}, ${props.blue})`,
       }}

@@ -64,6 +64,7 @@ function HomeScreen({ navigation }) {
         style={{ width: "100%" }}
         data={colorArray}
         renderItem={renderItem}
+        numColumns={4}
       />
     </View>
   );
